@@ -1,0 +1,25 @@
+-- BETWEEN : 범위 내의 조건
+SELECT * FROM Orders;
+SELECT * FROM Orders
+WHERE OrderDate >= '1996-08-01' 
+AND OrderDate < '1996-09-01';
+-- BETWEEN 사용 
+SELECT *
+FROM Orders
+-- 두값 포함되니까 주의해서 작성
+WHERE OrderDate BETWEEN '1996-08-01' AND '1996-08-31';
+
+-- 가격이 10.00이상 ~ 20.00 이하인 상품들 
+SELECT *
+FROM PRODUCTS 
+WHERE price BETWEEN '10.00' AND '20.00';
+-- 주문일이 1998년 1월에 주문한 주문들 
+SELECT *
+FROM ORDERES 
+WHERE ORDERDATE >= '1998-01-01'
+AND ORDERDATE <= '1998-01-31';
+-- 50년대생 직원들 조회 1950/01/01 ~ 1959/12/31
+SELECT *
+FROM EMPLOYEES
+WHERE BIRTHDATE between 
+'1950-01-01' AND '1
