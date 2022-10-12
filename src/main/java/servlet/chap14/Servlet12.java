@@ -34,6 +34,7 @@ public class Servlet12 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sql = "SELECT CustomerName "
 				+ "FROM Customers "
+				+ "WHERE CustomerID <=2 "
 				+ "ORDER BY CustomerName ";
 		// 1. JDBC 드라이버 로딩
 		try {
@@ -61,6 +62,28 @@ public class Servlet12 extends HttpServlet {
 			// 5. 쿼리 실행 결과 사용(가공)
 			// ResultSet 사용
 			System.out.println("문제없이 연결됨");
+			
+			//▼ 첫번째 행에 첫번째 컬럼을 가져와서 출력해보기
+			System.out.println(rs.next()); // true
+			// 행을 옮기고 나서 그 행에 첫번째 ~ 세번째 컬럼
+			String name1 = rs.getString(1); // 문자열을 얻고싶을때 (첫번째컬럼)
+			System.out.println(name1);
+			// result맵 실행하면서 행이 이동한거 
+			System.out.println(rs.next()); // true
+			String name2 = rs.getString(1);
+			System.out.println(name2);
+			
+			// false면 행 자체가 존재하지않음 
+			System.out.println(rs.next()); // false
+			
+			
+			// while문으로 간단히 작성
+			while (rs.next()) {
+				// 첫번째행을 문자열로 가져와서 출력해라 
+				rs.getString(1);
+				System.out.println(name);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("문제가 발생됨, 식사하고 해결합시다!!");
